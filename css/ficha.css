@@ -32,3 +32,159 @@ body {
     width: 33.3%;
     background-color: lightpink;
 }
+
+.main {
+    height: 31.9em;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightsteelblue;
+}
+
+.columnIzq {
+    height: 31.9em;
+    width: 33.3%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightgray;
+}
+
+.audienciaTitulo {
+    height: 4em;
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1em;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:flex-start;
+
+    background-color: yellow;
+}
+.audienciaIconos {
+    height: 7em;
+    width: 100%;
+    margin-bottom: .5em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightblue;
+}
+
+.audiencia2 {
+    height: 7em;
+    width: 33.3%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: pink; 
+}
+.seguidoresFake {
+    height: 7em;
+    width: 33.3%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightgray; 
+}
+.audienciaReal {
+    height: 7em;
+    width: 33.3%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: blue; 
+}
+.audienciaDistribucionEdad {
+    height: 11em;
+    width: 100%;
+    margin-bottom: .5em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightpink;
+}
+.audiencia {
+    height: 12em;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: green;
+}
+
+.audienciaGenero {
+    height: 10em;
+    width: 12.2em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: brown;
+}
+.audienciaPais {
+    height: 10em;
+    width: 12.2em;
+    /* padding: 1em; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: orange;
+}
+.columnMed {
+    height: 31.9em;
+    width: 33.3%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightcoral;
+}
+.columnDer {
+    height: 31.9em;
+    width: 33.3%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightgray;
+}
+
+
