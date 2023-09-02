@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.navbar {
+    height: 5em;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navIzq {
+    height: 5em;
+    width: 33.3%;
+    background-color: lightblue;
+}
+.navMed {
+    height: 5em;
+        width: 33.3%;
+    background-color: lightgreen;
+}
+.navDer {
+    height: 5em;
+    width: 33.3%;
+    background-color: lightpink;
+}
