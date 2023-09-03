@@ -1,3 +1,5 @@
+import { chartColors } from "../utils.js";
+
 const x = document.getElementById("izq");
 const userData = localStorage.getItem("userData");
 const parsedUserData = JSON.parse(userData);
@@ -12,24 +14,65 @@ seguidoresFake.innerHTML += parsedUserData.fake_followers_formated;
 const audienciaReal = document.getElementById("audienciaReal");
 audienciaReal.innerHTML += parsedUserData.real_followers_formated;
 
-// aqui se ve el grafico
-const labels = ["Enero", "Febrero", "Marzo", "Abril"];
+// chart.canvas.parentNode.style.height = "128px";
+// chart.canvas.parentNode.style.width = "128px";
+const renderCart = () => {
+  const {
+    insight_perc_13,
+    insight_perc_18,
+    insight_perc_25,
+    insight_perc_35,
+    insight_perc_45,
+    insight_perc_65,
+  } = parsedUserData;
 
-const graph = document.querySelector("#grafica");
+  const data = {
+    labels: ["13-17", "18-24", "25-34", "35-44", "45-64", "65+"],
+    datasets: [
+      {
+        data: [
+          insight_perc_13,
+          insight_perc_18,
+          insight_perc_25,
+          insight_perc_35,
+          insight_perc_45,
+          insight_perc_65,
+        ],
+        backgroundColor: chartColors,
+      },
+    ],
+  };
 
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: "Ejemplo 1",
-      data: [1, 2, 3, 4],
-      backgroundColor: "rgba(9, 129, 176, 0.2)",
+  const options = {
+    plugins: {
+      legend: {
+        position: "left",
+      },
     },
-  ],
+  };
+  new Chart("modelschart", { type: "doughnut", data, options: options });
 };
 
-const config = {
-  type: "bar",
-  data: data,
-};
-new Chart(graph, config);
+renderCart();
+
+// aqui se ve el grafico
+// const labels = ["Enero", "Febrero", "Marzo", "Abril"];
+
+// const graph = document.querySelector("#grafica");
+
+// const data = {
+//   labels: labels,
+//   datasets: [
+//     {
+//       label: "Ejemplo 1",
+//       data: [1, 2, 3, 4],
+//       backgroundColor: "rgba(9, 129, 176, 0.2)",
+//     },
+//   ],
+// };
+
+// const config = {
+//   type: "bar",
+//   data: data,
+// };
+// new Chart(graph, config);
