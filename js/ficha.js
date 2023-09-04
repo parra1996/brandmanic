@@ -1,4 +1,4 @@
-import { chartColors } from "../utils.js";
+import { chartColors, paisChartColors } from "../utils.js";
 
 const x = document.getElementById("izq");
 const userData = localStorage.getItem("userData");
@@ -14,8 +14,6 @@ seguidoresFake.innerHTML += parsedUserData.fake_followers_formated;
 const audienciaReal = document.getElementById("audienciaReal");
 audienciaReal.innerHTML += parsedUserData.real_followers_formated;
 
-// chart.canvas.parentNode.style.height = "128px";
-// chart.canvas.parentNode.style.width = "128px";
 const renderCart = () => {
   const {
     insight_perc_13,
@@ -55,24 +53,74 @@ const renderCart = () => {
 
 renderCart();
 
-// aqui se ve el grafico
-// const labels = ["Enero", "Febrero", "Marzo", "Abril"];
+const genderChart = () => {
+  const { insight_perc_m, insight_perc_f } = parsedUserData;
 
-// const graph = document.querySelector("#grafica");
+  const data = {
+    labels: ["hombre", "mujer"],
+    datasets: [
+      {
+        data: [insight_perc_m, insight_perc_f],
+        backgroundColor: ["blue", "pink"],
+      },
+    ],
+  };
 
-// const data = {
-//   labels: labels,
-//   datasets: [
-//     {
-//       label: "Ejemplo 1",
-//       data: [1, 2, 3, 4],
-//       backgroundColor: "rgba(9, 129, 176, 0.2)",
-//     },
-//   ],
-// };
+  const options = {
+    plugins: {
+      legend: {
+        position: "left",
+      },
+      // labels: {
+      //   render: "value",
+      // },
+      showActualPercentages: true,
+    },
+  };
+  new Chart("generoChart", { type: "doughnut", data, options: options });
+};
 
-// const config = {
-//   type: "bar",
-//   data: data,
-// };
-// new Chart(graph, config);
+genderChart();
+
+const paisChart = () => {
+  const {
+    insight_perc_p1,
+    insight_perc_p2,
+    insight_perc_p3,
+    insight_perc_p4,
+    insight_perc_p5,
+  } = parsedUserData;
+
+  let topcountries = [];
+  const topCountriesArray = parsedUserData.insightsCountry;
+  for (let i = 0; i < topCountriesArray.length; i++) {
+    topcountries.push(topCountriesArray[i].country);
+  }
+
+  const data = {
+    labels: [topcountries],
+    datasets: [
+      {
+        data: [
+          insight_perc_p1,
+          insight_perc_p2,
+          insight_perc_p3,
+          insight_perc_p4,
+          insight_perc_p5,
+        ],
+        backgroundColor: paisChartColors,
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        position: "left",
+      },
+    },
+  };
+  new Chart("paisChart", { type: "doughnut", data, options: options });
+};
+
+paisChart();

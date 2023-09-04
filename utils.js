@@ -7,4 +7,12 @@ export const chartColors = [
   "lightcyan",
 ];
 
+export const paisChartColors = [
+  "pink",
+  "lightblue",
+  "lightyellow",
+  "lightgreen",
+  "lightcoral",
+];
+
 // export { chartColors };
