@@ -15,4 +15,14 @@ export const paisChartColors = [
   "lightcoral",
 ];
 
+export const engagementChartColors = [
+  "pink",
+  "lightblue",
+  "lightyellow",
+  "lightgreen",
+  "lightcoral",
+  "yellowgreen",
+  "blue",
+];
+
 // export { chartColors };

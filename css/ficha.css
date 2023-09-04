@@ -21,6 +21,26 @@ body {
     height: 5em;
     width: 33.3%;
     background-color: lightblue;
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.userPic {
+    height: 5em;
+    width: 30%;
+    background-color:red;
+
+    display: flex;
+    justify-content: center;
+    /* border-radius: 3em; */
+}
+
+.usePicDetail{ 
+    border-radius: 3em;
+    /* height:"60px";    */
+    /* width:"10px" */
 }
 .navMed {
     height: 5em;
@@ -175,6 +195,63 @@ body {
 
     background-color: lightcoral;
 }
+
+.publicacionesTitulo {
+    height: 4em;
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1em;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: lavender    ;
+}
+
+.DistribucionTerritorios {
+    height: 12em;
+    width: 100%;
+    margin-bottom: .5em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(119, 30, 44);
+}
+
+.franjaHoraria {
+    height: 7em;
+    width: 100%;
+    margin-bottom: .5em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightsteelblue;
+}
+
+.marcas {
+    height: 8em;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: lightyellow   ;
+}
+
+/* DESEMPEÑO */
+
 .columnDer {
     height: 31.9em;
     width: 33.3%;
@@ -187,4 +264,103 @@ body {
     background-color: lightgray;
 }
 
+.desempenoTitulo {
+    height: 4em;
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1em;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: lightgoldenrodyellow;
+}
+
+.desempnoIconos {
+    height: 5em;
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1em;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(128, 128, 128, 0.377); 
+}
+
+.desempenoImpresiones {
+    
+    height: 5em;
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1em;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: lightskyblue ;
+}
+
+.desempenoReproducciones {
+    
+    height: 5em;
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1em;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: lightcoral 
+}
+
+.desempenoEngagement {
+    
+    height: 5em;
+    width: 100%;
+    margin-bottom: .5em;
+    padding: 1em;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: lightseagreen 
+}
+
+.desempenoEngagementRatio {
+    height: 7.9em;
+    width: 100%;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: pink   
+}
+
+
+/* NAVBAR */
 
