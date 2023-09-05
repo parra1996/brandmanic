@@ -378,6 +378,10 @@ const mostrarHora = () => {
 };
 mostrarHora();
 
-const mariquear = () => {
+const goHome = () => {
   console.log("cñjegvbleylwerygweryh");
+  window.location.href = "index.html";
 };
+
+const x = document.getElementById("salir");
+x.addEventListener("click", goHome);
