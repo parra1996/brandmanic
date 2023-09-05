@@ -1,90 +1,64 @@
+import { renderChart } from "../charts.js";
 import {
   chartColors,
   engagementChartColors,
   paisChartColors,
-} from "../utils.js";
+} from "../colors.js";
+import {
+  audiencia,
+  audienciaAlcance,
+  audienciaDesempeno,
+  audienciaReal,
+  engagement_formated,
+  er_alcance,
+  er_audiencia,
+  horaActualizada,
+  impresiones,
+  impresionesAlcance,
+  impresionesAudiencia,
+  userDetailData,
+  userDetailIg,
+  userDetailUsername,
+  vplays_formated,
+  vr_alcance,
+  vr_audiencia,
+} from "../consts.js";
 
-const x = document.getElementById("izq");
 const userData = localStorage.getItem("userData");
 const parsedUserData = JSON.parse(userData);
 
 console.log(parsedUserData);
-const audiencia = document.getElementById("audiencia2");
+
 audiencia.innerHTML += parsedUserData.followers_formated;
 
-const seguidoresFake = document.getElementById("seguidoresFake");
 seguidoresFake.innerHTML += parsedUserData.fake_followers_formated;
 
-const audienciaReal = document.getElementById("audienciaReal");
 audienciaReal.innerHTML += parsedUserData.real_followers_formated;
 
-const renderCart = () => {
-  const {
-    insight_perc_13,
-    insight_perc_18,
-    insight_perc_25,
-    insight_perc_35,
-    insight_perc_45,
-    insight_perc_65,
-  } = parsedUserData;
+renderChart({
+  id: "modelschart",
+  type: "doughnut",
+  labels: ["13-17", "18-24", "25-34", "35-44", "45-64", "65+"],
+  infoData: [
+    parsedUserData.insight_perc_13,
+    parsedUserData.insight_perc_18,
+    parsedUserData.insight_perc_25,
+    parsedUserData.insight_perc_35,
+    parsedUserData.insight_perc_45,
+    parsedUserData.insight_perc_65,
+  ],
+  backgroundColor: chartColors,
+  titleText: "Distribución por Edad",
+});
 
-  const data = {
-    labels: ["13-17", "18-24", "25-34", "35-44", "45-64", "65+"],
-    datasets: [
-      {
-        data: [
-          insight_perc_13,
-          insight_perc_18,
-          insight_perc_25,
-          insight_perc_35,
-          insight_perc_45,
-          insight_perc_65,
-        ],
-        backgroundColor: chartColors,
-      },
-    ],
-  };
-
-  const options = {
-    plugins: {
-      legend: {
-        position: "left",
-      },
-    },
-  };
-  new Chart("modelschart", { type: "doughnut", data, options: options });
-};
-
-renderCart();
-
-const genderChart = () => {
-  const { insight_perc_m, insight_perc_f } = parsedUserData;
-
-  const data = {
-    labels: ["hombre", "mujer"],
-    datasets: [
-      {
-        data: [insight_perc_m, insight_perc_f],
-        backgroundColor: ["blue", "pink"],
-      },
-    ],
-  };
-
-  const options = {
-    plugins: {
-      legend: {
-        position: "left",
-      },
-      // labels: {
-      //   render: "value",
-      // },
-      showActualPercentages: true,
-    },
-  };
-  new Chart("generoChart", { type: "doughnut", data, options: options });
-};
-
-genderChart();
+renderChart({
+  id: "generoChart",
+  type: "pie",
+  labels: [`hombre`, `mujer `],
+  infoData: [parsedUserData.insight_perc_m, parsedUserData.insight_perc_f],
+  backgroundColor: ["blue", "pink"],
+  titleText: "Distribución por género",
+});
 
 const paisChart = () => {
   const {
@@ -102,7 +76,7 @@ const paisChart = () => {
   }
 
   const data = {
-    labels: [topcountries],
+    labels: [...topcountries],
     datasets: [
       {
         data: [
@@ -121,13 +95,45 @@ const paisChart = () => {
     plugins: {
       legend: {
         position: "left",
+        padding: 1,
+      },
+      title: {
+        display: true,
+        text: "Distribución por Pais",
+        font: {
+          size: 16,
+          family: "vazir",
+        },
       },
     },
   };
   new Chart("paisChart", { type: "doughnut", data, options: options });
 };
 
-paisChart();
+const transformData = () => {
+  let topcountries = [];
+  const topCountriesArray = parsedUserData.insightsCountry;
+  for (let i = 0; i < topCountriesArray.length; i++) {
+    topcountries.push(topCountriesArray[i].country);
+  }
+
+  return topcountries;
+};
+
+renderChart({
+  id: "paisChart",
+  type: "doughnut",
+  other: transformData,
+  infoData: [
+    parsedUserData.insight_perc_p1,
+    parsedUserData.insight_perc_p2,
+    parsedUserData.insight_perc_p3,
+    parsedUserData.insight_perc_p4,
+    parsedUserData.insight_perc_p5,
+  ],
+  backgroundColor: paisChartColors,
+  titleText: "Distribución por Pais",
+});
 
 //TODO
 // const publicacionesChart = () => {
@@ -204,37 +210,26 @@ publicacionesMomentChart();
 
 // DESEMPEÑO
 
-const audienciaDesempeno = document.getElementById("audienciaDesempeno");
 audienciaDesempeno.innerHTML += parsedUserData.followers_formated;
 
-const audienciaAlcance = document.getElementById("audienciaAlcance");
 audienciaAlcance.innerHTML += parsedUserData.reach_formated;
 
-const impresiones = document.getElementById("desempenoImpresiones");
 impresiones.innerHTML += parsedUserData.avg_impressions_formated;
 
-const impresionesAlcance = document.getElementById("impresionesAlcance");
 impresionesAlcance.innerHTML += parsedUserData.ir_alcance;
 
-const impresionesAudiencia = document.getElementById("impresionesAudiencia");
 impresionesAudiencia.innerHTML += parsedUserData.ir_audiencia + "%";
 
-const vplays_formated = document.getElementById("vplays_formated");
 vplays_formated.innerHTML += parsedUserData.vplays_formated + "%";
 
-const vr_alcance = document.getElementById("vr_alcance");
 vr_alcance.innerHTML += parsedUserData.vr_alcance + "%";
 
-const vr_audiencia = document.getElementById("vr_audiencia");
 vr_audiencia.innerHTML += parsedUserData.vr_audiencia + "%";
 
-const engagement_formated = document.getElementById("engagement_formated");
 engagement_formated.innerHTML += parsedUserData.engagement_formated + "%";
 
-const er_alcance = document.getElementById("er_alcance");
 er_alcance.innerHTML += parsedUserData.er_alcance + "%";
 
-const er_audiencia = document.getElementById("er_audiencia");
 er_audiencia.innerHTML += parsedUserData.er_audiencia + "%";
 
 const engRateDaily = () => {
@@ -242,7 +237,6 @@ const engRateDaily = () => {
   let dailyRate = [];
   for (let i = 0; i < post_week_day.length; i++) {
     dailyRate.push(post_week_day[i].engrate);
-    // console.log(post_week_day[i].engrate, "dentro del for");
   }
 
   console.log(dailyRate);
@@ -250,7 +244,6 @@ const engRateDaily = () => {
     labels: ["L", "M", "M", "J", "V", "S", "D"],
     datasets: [
       {
-        // labels: "engagement rate",
         data: [...dailyRate],
         backgroundColor: [...engagementChartColors],
         borderColor: [...engagementChartColors],
@@ -277,31 +270,114 @@ engRateDaily();
 
 // NAVBAR
 
-const {
-  username,
-  account_picture,
-  followers_formated,
-  fakes,
-  avg_engagement_formated,
-  engagement_rate,
-  age,
-  country,
-  interests,
-  account_url,
-  gender,
-} = parsedUserData;
+const { username, account_picture, age, country, account_url, gender } =
+  parsedUserData;
 
-// if(gender ===)
-
-const userPic = document.getElementById("userPic");
 userPic.src = account_picture;
 
-const userDetail = document.getElementById("userDetail");
-userDetail.innerHTML += username + "<br/>";
-userDetail.innerHTML +=
-  `<a href='${account_url}'>
-<i class="fa-brands fa-instagram" style="color: #ee11dc;"></i> ${username}
- <a/>` + "<br/>";
-userDetail.innerHTML += `${country},
-<i class="fa-solid fa-venus" style="color: #fa01fe;"></i>
-${gender === "1" ? "mujer" : "hombre"} ${age} años`;
+userDetailUsername.innerHTML += username;
+
+userDetailIg.innerHTML += `<a href='${account_url}' target="_blank">
+ <i class="fa-brands fa-instagram" style="color: #ee11dc;"></i> ${username}
+ <a/>`;
+userDetailData.innerHTML += `${country},
+ <i class="fa-solid fa-venus" style="color: #fa01fe;"></i>
+ ${gender === "1" ? "mujer" : "hombre"} ${age} años`;
+
+const reachchart = () => {
+  const { reach_formated_graph } = parsedUserData;
+
+  const data = {
+    // labels: ["hombre", "mujer"],
+    datasets: [
+      {
+        data: [reach_formated_graph],
+        backgroundColor: ["blue", "white"],
+      },
+    ],
+  };
+
+  const options = {
+    elements: {
+      center: {
+        text: "tu madre",
+      },
+    },
+    plugins: {
+      legend: {
+        position: "left ",
+      },
+    },
+  };
+  new Chart("reachchart", { type: "doughnut", data, options: options });
+};
+reachchart();
+
+// renderChart({
+//   id: "reachchart",
+//   type: "doughnut",
+//   infoData: [parsedUserData.reach_formated_graph],
+//   backgroundColor: ["blue", "white"],
+//   titleText: "Reach",
+// });
+
+const relevanceChart = () => {
+  const { relevance_formated_graph, resonance_formated_graph } = parsedUserData;
+
+  console.log(relevance_formated_graph);
+  const data = {
+    datasets: [
+      {
+        data: [relevance_formated_graph],
+        backgroundColor: ["blue", "white"],
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        position: "left ",
+      },
+    },
+  };
+  new Chart("relevanceChart", { type: "doughnut", data, options: options });
+};
+
+relevanceChart();
+
+const resonanceChart = () => {
+  const { resonance_formated_graph } = parsedUserData;
+
+  console.log(resonance_formated_graph);
+  const data = {
+    // labels: ["hombre", "mujer"],
+    datasets: [
+      {
+        data: [resonance_formated_graph],
+        backgroundColor: ["blue", "white"],
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        position: "left ",
+      },
+    },
+  };
+  new Chart("resonanceChart", { type: "doughnut", data, options: options });
+};
+
+resonanceChart();
+
+const mostrarHora = () => {
+  const horaActual = moment().format("MMMM Do YYYY, h:mm:ss a");
+  horaActualizada.innerHTML += horaActual;
+};
+mostrarHora();
+
+const mariquear = () => {
+  console.log("cñjegvbleylwerygweryh");
+};

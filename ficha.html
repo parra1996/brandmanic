@@ -25,26 +25,47 @@
         <div class="userPic">
           <img class="usePicDetail" src="" id="userPic" />
         </div>
-        <div class="userDetail" id="userDetail"></div>
+        <div class="userDetail" id="userDetail">
+          <span class="userDetailUsername" id="userDetailUsername"></span>
+          <span class="userDetailIg" id="userDetailIg"></span>
+          <span class="userDetailData" id="userDetailData"></span>
+        </div>
       </div>
       <div class="navMed">
-        <div style="width: 200px">
-          <canvas id="reachchart"></canvas>
+        <div class="reachchart">
+          <div style="width: 45px">
+            <canvas id="reachchart"></canvas>
+          </div>
         </div>
-        <div style="width: 200px">
-          <canvas id="relevancechart"></canvas>
+        <div class="relevanceChart">
+          <div style="width: 45px">
+            <canvas id="relevanceChart"></canvas>
+          </div>
         </div>
-        <div style="width: 200px">
-          <canvas id="resonancechart"></canvas>
+        <div class="resonanceChart">
+          <div style="width: 45px">
+            <canvas id="resonanceChart"></canvas>
+          </div>
         </div>
       </div>
-      <div class="navDer">der</div>
+      <div class="navDer">
+        <div class=""></div>
+        <div class="options">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span onclick="mariquear()">Salir</span> <br />
+          <i class="fa-solid fa-download"></i>
+          <span onclick="saludo()">Descargar influcard</span> <br />
+          <i class="fa-solid fa-eye"></i>
+          Ver perfil <br />
+          <span id="horaActualizada">datos actualizados a </span>
+        </div>
+      </div>
     </div>
     <div class="main">
       <div class="columnIzq">
         <div class="audienciaTitulo">
           <i class="fa-solid fa-users fa-xl" style="color: #0c61cf"></i>
-          <p>AUDIENCIA</p>
+          <p id="audienciaTitulo">AUDIENCIA</p>
         </div>
         <div class="audienciaIconos">
           <div class="audiencia2" id="audiencia2">
@@ -61,18 +82,21 @@
           </div>
         </div>
         <div class="audienciaDistribucionEdad">
-          <div style="width: 200px">
+          <!-- <div class="container"> -->
+          <div style="width: 250px">
             <canvas id="modelschart"></canvas>
           </div>
+          <!-- </div> -->
         </div>
         <div class="audiencia">
           <div class="audienciaGenero">
-            <div style="width: 180px">
+            <!-- <span>Distribución por genero</span> -->
+            <div style="width: 200px">
               <canvas id="generoChart"></canvas>
             </div>
           </div>
           <div class="audienciaPais">
-            <div style="width: 150px">
+            <div style="width: 200px">
               <canvas id="paisChart"></canvas>
             </div>
           </div>
@@ -81,7 +105,7 @@
       <div class="columnMed">
         <div class="publicacionesTitulo">
           <i class="fa-solid fa-camera fa-xl" style="color: #0058f0"></i>
-          <p>PUBLICACIONES</p>
+          <p id="publicacionesTitulo">PUBLICACIONES</p>
         </div>
         <div class="DistribucionTerritorios">
           <div style="width: 200px">
@@ -99,16 +123,20 @@
       <div class="columnDer">
         <div class="desempenoTitulo">
           <i class="fa-solid fa-chart-line fa-xl" style="color: #0962fb"></i>
-          DESEMPEÑO
+          <p id="desemepenoTitulo">DESEMPEÑO</p>
         </div>
         <div class="desempnoIconos">
           <div class="audienciaDesempeno" id="audienciaDesempeno">
-            <i class="fa-solid fa-users" style="color: #313263"></i>
-            Audiencia
+            <span>
+              <i class="fa-solid fa-users" style="color: #313263"></i>
+              Audiencia</span
+            >
           </div>
           <div class="audienciaAlcance" id="audienciaAlcance">
-            <i class="fa-solid fa-user" style="color: #11264a"></i>
-            Alcance
+            <span>
+              <i class="fa-solid fa-user" style="color: #11264a"></i>
+              Alcance</span
+            >
           </div>
         </div>
         <div class="desempenoImpresiones">
@@ -143,6 +171,12 @@
       </div>
     </div>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"
+      integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"

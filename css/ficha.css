@@ -4,69 +4,139 @@ body {
 
     height: 100vh;
     width: 100vw;
-
 }
 
 .navbar {
-    height: 5em;
+    margin: 0;
+    padding: 0;
+
+    height: 7em;
     width: 100%;
 
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    border-bottom: solid lightgray;
+    /* background-color: red; */
 }
 
 .navIzq {
-    height: 5em;
+    height: 7em;
     width: 33.3%;
-    background-color: lightblue;
+    /* background-color: lightblue; */
 
     display: flex;
     flex-direction: row;
-
 }
 
 .userPic {
-    height: 5em;
-    width: 30%;
-    background-color:red;
+    height: 6.5em;
+    width: 25%;
 
     display: flex;
     justify-content: center;
-    /* border-radius: 3em; */
+} 
+
+.userDetail {
+    height: 6.5em;
+    width: 75%;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    color: darkslategrey;
+
 }
+
+.userDetailUsername {
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+
 
 .usePicDetail{ 
     border-radius: 3em;
-    /* height:"60px";    */
-    /* width:"10px" */
 }
 .navMed {
-    height: 5em;
-        width: 33.3%;
+    height: 7em;
+    width: 33.3%;
     background-color: lightgreen;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items:center;
 }
+
+ .reachchart {
+    height: 7em;
+    width: 33.3%;
+    background-color: red;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+ .relevanceChart {
+    height: 7em;
+    width: 33.3%;
+    background-color: blue;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+ .resonanceChart {
+    height: 7em;
+    width: 33.3%;
+    background-color: yellow;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+
+
 .navDer {
-    height: 5em;
+    height: 7em;
     width: 33.3%;
     background-color: lightpink;
+    padding-right: 2em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.options {
+    font-size: .7em;
 }
 
 .main {
-    height: 31.9em;
-    width: 100vw;
+    height: 39.2em;
+    width: 100%;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 
-    background-color: lightsteelblue;
-}
+    background-color: rgba(176, 196, 222, 0.429);
+} 
 
 .columnIzq {
-    height: 31.9em;
+    height: 39.2em;
     width: 33.3%;
 
     display: flex;
@@ -79,30 +149,40 @@ body {
 
 .audienciaTitulo {
     height: 4em;
-    width: 100%;
+    width: 98%;
     margin-bottom: .5em;
     padding: 1em;
+    border-radius: .5em;
 
-    text-align: center;
 
     display: flex;
     flex-direction: row;
-    align-items:center;
-    justify-content:flex-start;
+    justify-content: flex-start;
+    align-items: center;
 
-    background-color: yellow;
+    background-color: white;
+}
+
+#audienciaTitulo {
+    color: darkslategrey;
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding-top: .5em;
+    padding-left: .5em;
 }
 .audienciaIconos {
     height: 7em;
-    width: 100%;
+    width: 98%;
     margin-bottom: .5em;
+    border-radius: .5em;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 
-    background-color: lightblue;
+    color: darkslategrey;
+    background-color: white;
 }
 
 .audiencia2 {
@@ -113,8 +193,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
 
-    background-color: pink; 
+    color: darkslategrey;
 }
 .seguidoresFake {
     height: 7em;
@@ -125,7 +207,10 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: lightgray; 
+    font-size: 1.2em;
+    font-weight: bold;
+    color: darkslategrey;
+
 }
 .audienciaReal {
     height: 7em;
@@ -136,22 +221,26 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: blue; 
+    font-size: 1.2em;
+    font-weight: bold;
+
+
 }
 .audienciaDistribucionEdad {
-    height: 11em;
-    width: 100%;
+    height: 14em;
+    width: 98%;
     margin-bottom: .5em;
+    border-radius: .5em;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    background-color: lightpink;
+    background-color: white;
 }
 .audiencia {
-    height: 12em;
+    height: 13em;
     width: 100%;
 
     display: flex;
@@ -159,33 +248,37 @@ body {
     align-items: center;
     justify-content: space-evenly;
 
-    background-color: green;
 }
 
 .audienciaGenero {
-    height: 8em;
-    width: 12.2em;
+    height: 12em;
+    width: 15.5em;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    background-color: lightgray;
+    border-radius: .5em;
+
+    background-color: white;
 }
 .audienciaPais {
-    height: 8em;
-    width: 12.2em;
-    /* padding: 1em; */
+    height: 12em;
+    width: 15.5em;
+    padding: 1em; 
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 
-    background-color: orange;
-}
-.columnMed {
-    height: 31.9em;
+    border-radius: .5em;
+
+    background-color: white;
+} 
+ .columnMed {
+    height: 39.2em;
     width: 33.3%;
 
     display: flex;
@@ -198,22 +291,30 @@ body {
 
 .publicacionesTitulo {
     height: 4em;
-    width: 100%;
+    width: 98%;
     margin-bottom: .5em;
     padding: 1em;
+    border-radius: .5em;
 
-    text-align: center;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
 
-    background-color: lavender    ;
+    background-color: white;
+}
+
+#publicacionesTitulo {
+    color: darkslategrey;
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding-top: .5em;
+    padding-left: .5em;
 }
 
 .DistribucionTerritorios {
-    height: 12em;
+    height: 16em;
     width: 100%;
     margin-bottom: .5em;
 
@@ -239,7 +340,7 @@ body {
 }
 
 .marcas {
-    height: 8em;
+    height: 11em;
     width: 100%;
 
     display: flex;
@@ -253,7 +354,7 @@ body {
 /* DESEMPEÑO */
 
 .columnDer {
-    height: 31.9em;
+    height: 39.2em;
     width: 33.3%;
 
     display: flex;
@@ -261,106 +362,132 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: lightgray;
+    background-color: yellow;
 }
 
 .desempenoTitulo {
     height: 4em;
-    width: 100%;
+    width: 98%;
     margin-bottom: .5em;
     padding: 1em;
+    border-radius: .5em;
 
-    text-align: center;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
 
-    background-color: lightgoldenrodyellow;
+    background-color: white;
+}
+
+#desemepenoTitulo {
+    color: darkslategrey;
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding-top: .5em;
+    padding-left: .5em;
 }
 
 .desempnoIconos {
-    height: 5em;
-    width: 100%;
+    height: 4em;
+    width: 98%;
     margin-bottom: .5em;
     padding: 1em;
+    border-radius: .5em;
 
-    text-align: center;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-
-    background-color: rgba(128, 128, 128, 0.377); 
-}
-
-.desempenoImpresiones {
-    
-    height: 5em;
-    width: 100%;
-    margin-bottom: .5em;
-    padding: 1em;
-
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
 
-    background-color: lightskyblue ;
+    background-color: white;
 }
 
-.desempenoReproducciones {
-    
-    height: 5em;
-    width: 100%;
-    margin-bottom: .5em;
-    padding: 1em;
-
-    text-align: center;
+.audienciaDesempeno {
+    height: 2em;
+    width: 98%;
 
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-start;
 
-    background-color: lightcoral 
+}
+
+.audienciaAlcance {
+    height: 2em;
+    width: 98%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.desempenoImpresiones {
+    height: 7em;
+    width: 98%;
+    margin-bottom: .5em;
+    padding: 1em;
+    border-radius: .5em;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: white;
+}
+
+.desempenoReproducciones {
+    height: 6em;
+        width: 98%;
+        margin-bottom: .5em;
+        padding: 1em;
+        border-radius: .5em;
+    
+    
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    
+        background-color: white;
 }
 
 .desempenoEngagement {
     
-    height: 5em;
-    width: 100%;
-    margin-bottom: .5em;
-    padding: 1em;
-
-    text-align: center;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-
-    background-color: lightseagreen 
+    height: 6em;
+        width: 98%;
+        margin-bottom: .5em;
+        padding: 1em;
+        border-radius: .5em;
+    
+    
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    
+        background-color: white;
 }
 
 .desempenoEngagementRatio {
-    height: 7.9em;
-    width: 100%;
+    height: 9em;
+    width: 98%;
+    margin-bottom: .5em;
+    padding: 1em;
+    border-radius: .5em;
 
-    text-align: center;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
 
-    background-color: pink   
-}
-
-
-/* NAVBAR */
-
+background-color: white;
+} 
