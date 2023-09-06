@@ -19,10 +19,11 @@ function crearCards({ data }) {
     interests,
   } = data;
 
+  console.log(data);
   const newInterest = interests.split(",");
 
   const card = `
-     <div class="card d-flex flex-row " data="${data}" style="width: 18rem;">
+     <div class="card d-flex flex-row customCard"  style="width: 18rem;">
      <div>
      <img src='${account_picture}' id="profilePic" class="rounded-circle" style="height: 100px;" alt="...">
      <p><i class="fa-brands fa-instagram"></i> ${username}</p>
@@ -37,7 +38,6 @@ function crearCards({ data }) {
             <p class="card-text">Media Eng: ${avg_engagement_formated}</p>
             <p class="card-text">Eng Rate: ${followers_formated}</p>
             <p class="card-text">Impresiones: ${engagement_rate}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>`;
 

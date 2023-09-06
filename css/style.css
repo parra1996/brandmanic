@@ -1,5 +1,51 @@
-/* #main { 
+body {
     height: 100vh;
     width: 100vw;
-    background-color: lightblue;
-} */
+
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 39em;
+    width: 70em;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: lightgray;
+}
+
+#card-container {
+    height: 39em;
+    width: 80em;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: scroll;
+
+}
+
+#card-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.header {
+    height: 7em;
+    width: 100vw;
+
+    background-color: whitesmoke;
+
+}
+
+.customCard {
+    margin:1em
+}
