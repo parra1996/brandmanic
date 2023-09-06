@@ -6,8 +6,13 @@ export const renderChart = ({
   backgroundColor,
   titleText,
   other = false,
+  displayLegend = true,
+  otherData = false,
 }) => {
   if (other) labels = other();
+  if (otherData) infoData = otherData();
+
+  console.log(infoData);
 
   const data = {
     labels: [...labels],
@@ -22,8 +27,11 @@ export const renderChart = ({
   const options = {
     plugins: {
       legend: {
+        display: displayLegend,
         position: "left",
         align: "center",
+        borderWidth: 1,
+        borderColor: [...backgroundColor],
       },
       title: {
         display: true,

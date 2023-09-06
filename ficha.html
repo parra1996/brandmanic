@@ -51,12 +51,18 @@
       <div class="navDer">
         <div class=""></div>
         <div class="options">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <span id="salir">Salir</span> <br />
-          <i class="fa-solid fa-download"></i>
-          <span onclick="saludo()">Descargar influcard</span> <br />
-          <i class="fa-solid fa-eye"></i>
-          Ver perfil <br />
+          <span id="salir">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Salir</span
+          >
+          <span id="influcard">
+            <i class="fa-solid fa-download"></i>
+            Descargar influcard</span
+          >
+          <span id="perfil">
+            <i class="fa-solid fa-eye"></i>
+            Ver perfil
+          </span>
           <span id="horaActualizada">datos actualizados a </span>
         </div>
       </div>
@@ -141,30 +147,54 @@
         </div>
         <div class="desempenoImpresiones">
           <div id="desempenoImpresiones">
-            <i class="fa-solid fa-fingerprint fa-lg"></i>
-            Impresiones
+            <span>
+              <i class="fa-solid fa-fingerprint fa-lg"></i>
+              Impresiones
+            </span>
           </div>
-          <div id="impresionesAlcance">Alcance</div>
-          <div id="impresionesAudiencia">Audiencia</div>
+          <div id="desempenoImpresionesData">
+            <div class="impresionesAlcance">
+              <span id="impresionesAlcance"></span>
+            </div>
+            <div class="impresionesAudiencia">
+              <span id="impresionesAudiencia"></span>
+            </div>
+          </div>
         </div>
         <div class="desempenoReproducciones">
-          <div class="vplays_formated" id="vplays_formated">
-            <i class="fa-solid fa-play fa-lg"></i>
-            Reproducciones
+          <div id="vplays_formated">
+            <span>
+              <i class="fa-solid fa-play fa-lg"></i>
+              Reproducciones
+            </span>
           </div>
-          <div class="vr_alcance" id="vr_alcance">Alcance</div>
-          <div class="vr_audiencia" id="vr_audiencia">Audiencia</div>
+          <div id="vplays_formatedData">
+            <div class="vr_alcance">
+              <span id="vr_alcance"></span>
+            </div>
+            <div class="vr_audiencia">
+              <span id="vr_audiencia"></span>
+            </div>
+          </div>
         </div>
         <div class="desempenoEngagement">
-          <div class="engagement_formated" id="engagement_formated">
-            <i class="fa-solid fa-heart fa-lg"></i>
-            Engagement
+          <div id="engagement_formated">
+            <span>
+              <i class="fa-solid fa-heart fa-lg"></i>
+              Engagement
+            </span>
           </div>
-          <div class="er_alcance" id="er_alcance">Alcance</div>
-          <div class="er_audiencia" id="er_audiencia">Audiencia</div>
+          <div id="engagement_formatedData">
+            <div class="er_alcance">
+              <span id="er_alcance">Alcance</span>
+            </div>
+            <div class="er_audiencia">
+              <span id="er_audiencia">Audiencia</span>
+            </div>
+          </div>
         </div>
         <div class="desempenoEngagementRatio">
-          <div style="width: 200px">
+          <div style="width: 300px">
             <canvas id="engRateDaily"></canvas>
           </div>
         </div>

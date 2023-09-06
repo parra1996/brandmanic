@@ -208,23 +208,24 @@ const publicacionesMomentChart = () => {
 
 publicacionesMomentChart();
 
-// DESEMPEÑO
-
 audienciaDesempeno.innerHTML += parsedUserData.followers_formated;
 
 audienciaAlcance.innerHTML += parsedUserData.reach_formated;
 
 impresiones.innerHTML += parsedUserData.avg_impressions_formated;
 
-impresionesAlcance.innerHTML += parsedUserData.ir_alcance;
+impresionesAlcance.innerHTML +=
+  parsedUserData.ir_alcance + "%" + "<br/>" + "Alcance";
 
-impresionesAudiencia.innerHTML += parsedUserData.ir_audiencia + "%";
+impresionesAudiencia.innerHTML +=
+  parsedUserData.ir_audiencia + "%" + "<br/>" + "Audiencia";
 
 vplays_formated.innerHTML += parsedUserData.vplays_formated + "%";
 
-vr_alcance.innerHTML += parsedUserData.vr_alcance + "%";
+vr_alcance.innerHTML += parsedUserData.vr_alcance + "%" + "<br/>" + "Alcance";
 
-vr_audiencia.innerHTML += parsedUserData.vr_audiencia + "%";
+vr_audiencia.innerHTML +=
+  parsedUserData.vr_audiencia + "%" + "<br/>" + "Audiencia";
 
 engagement_formated.innerHTML += parsedUserData.engagement_formated + "%";
 
@@ -232,41 +233,24 @@ er_alcance.innerHTML += parsedUserData.er_alcance + "%";
 
 er_audiencia.innerHTML += parsedUserData.er_audiencia + "%";
 
-const engRateDaily = () => {
+const dailyRateFunc = () => {
   const { post_week_day } = parsedUserData;
   let dailyRate = [];
   for (let i = 0; i < post_week_day.length; i++) {
     dailyRate.push(post_week_day[i].engrate);
   }
-
-  console.log(dailyRate);
-  const data = {
-    labels: ["L", "M", "M", "J", "V", "S", "D"],
-    datasets: [
-      {
-        data: [...dailyRate],
-        backgroundColor: [...engagementChartColors],
-        borderColor: [...engagementChartColors],
-      },
-    ],
-  };
-
-  const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-    plugins: {
-      legend: {
-        position: "left",
-      },
-    },
-  };
-  new Chart("engRateDaily", { type: "bar", data, options: options });
+  return dailyRate;
 };
 
-engRateDaily();
+renderChart({
+  id: "engRateDaily",
+  type: "bar",
+  backgroundColor: [...engagementChartColors],
+  labels: ["L", "M", "M", "J", "V", "S", "D"],
+  titleText: "Engagement rate segun su publicación",
+  displayLegend: false,
+  otherData: dailyRateFunc,
+});
 
 // NAVBAR
 
@@ -291,6 +275,7 @@ const reachchart = () => {
     // labels: ["hombre", "mujer"],
     datasets: [
       {
+        labels: ["reach"],
         data: [reach_formated_graph],
         backgroundColor: ["blue", "white"],
       },
@@ -348,10 +333,7 @@ relevanceChart();
 
 const resonanceChart = () => {
   const { resonance_formated_graph } = parsedUserData;
-
-  console.log(resonance_formated_graph);
   const data = {
-    // labels: ["hombre", "mujer"],
     datasets: [
       {
         data: [resonance_formated_graph],

@@ -17,30 +17,32 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-bottom: solid lightgray;
-    /* background-color: red; */
+    border-bottom: solid  rgba(176, 196, 222, 0.429);;
 }
 
 .navIzq {
     height: 7em;
     width: 33.3%;
-    /* background-color: lightblue; */
 
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .userPic {
     height: 6.5em;
-    width: 25%;
+    width: 30%;
+    padding-right: .5em;
 
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-end;
 } 
 
 .userDetail {
     height: 6.5em;
-    width: 75%;
+    width: 70%;
 
 
     display: flex;
@@ -56,7 +58,6 @@ body {
     font-weight: bolder;
     font-size: 1.5em;
 }
-
 
 .usePicDetail{ 
     border-radius: 3em;
@@ -105,12 +106,10 @@ body {
     align-items: center;
 } 
 
-
-
 .navDer {
     height: 7em;
     width: 33.3%;
-    background-color: lightpink;
+    /* background-color: lightpink; */
     padding-right: 2em;
 
     display: flex;
@@ -119,9 +118,7 @@ body {
     align-items:center;
 }
 
-.options {
-    font-size: .7em;
-}
+
 
 .main {
     height: 39.2em;
@@ -144,7 +141,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: lightgray;
+    /* background-color: lightgray; */
 }
 
 .audienciaTitulo {
@@ -362,13 +359,12 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: yellow;
 }
 
 .desempenoTitulo {
     height: 4em;
     width: 98%;
-    margin-bottom: .5em;
+    margin-bottom: .4em;
     padding: 1em;
     border-radius: .5em;
 
@@ -392,7 +388,7 @@ body {
 .desempnoIconos {
     height: 4em;
     width: 98%;
-    margin-bottom: .5em;
+    margin-bottom: .4em;
     padding: 1em;
     border-radius: .5em;
 
@@ -428,66 +424,248 @@ body {
 }
 
 .desempenoImpresiones {
-    height: 7em;
+    height: 6em;
     width: 98%;
-    margin-bottom: .5em;
-    padding: 1em;
+    margin-bottom: .4em;
     border-radius: .5em;
 
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 
     background-color: white;
 }
 
+#desempenoImpresiones {
+    height: 3em;
+    width: 98%;
+    padding-left: .5em ;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.2em;
+    font-weight: 1.2em;
+
+}
+
+#desempenoImpresionesData {
+    height: 4em;
+    width: 98%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.impresionesAlcance {
+    height: 4em;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-right: solid rgba(128, 128, 128, 0.205);
+    
+}
+
+.impresionesAudiencia {
+    height: 4em;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .desempenoReproducciones {
     height: 6em;
-        width: 98%;
-        margin-bottom: .5em;
-        padding: 1em;
-        border-radius: .5em;
-    
-    
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-    
-        background-color: white;
+    width: 98%;
+    margin-bottom: .4em;
+    border-radius: .5em;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: white;
 }
+
+#vplays_formated {
+    height: 4em;
+    width: 98%;
+    padding-left: .5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.2em;
+    font-weight: 1.2em;
+
+}
+
+#vplays_formatedData {
+    height: 4em;
+    width: 98%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.vr_alcance {
+    height: 4em;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-right: solid rgba(128, 128, 128, 0.205);
+}
+
+.vr_audiencia {
+    height: 4em;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
 
 .desempenoEngagement {
     
     height: 6em;
-        width: 98%;
-        margin-bottom: .5em;
-        padding: 1em;
-        border-radius: .5em;
-    
-    
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-    
-        background-color: white;
+    width: 98%;
+    margin-bottom: .4em;
+    /* padding: 1em; */
+    border-radius: .5em;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: white;
 }
 
-.desempenoEngagementRatio {
-    height: 9em;
+#engagement_formated {
+    height: 4em;
     width: 98%;
-    margin-bottom: .5em;
+    padding-left: .5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.2em;
+    font-weight: 1.2em;
+}
+
+#engagement_formatedData {
+    height: 4em;
+    width: 98%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.er_alcance {
+    height: 4em;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-right: solid rgba(128, 128, 128, 0.205);
+}
+.er_audiencia {
+    height: 4em;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.desempenoEngagementRatio {
+    height: 12em;
+    width: 98%;
+    margin-bottom: .4em;
     padding: 1em;
     border-radius: .5em;
 
 
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 
 background-color: white;
-} 
+}
+
+.options {
+    font-size: 1em;
+    margin-left: 7em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+#salir {
+    padding-left: 1em;
+}
+
+#salir:hover {
+    height: 1.5em;
+    transition: .5s;
+    color: red;
+    cursor: pointer;
+}
+#influcard {
+        padding-left: 1em;
+}
+
+#influcard:hover {
+    height: 1.5em;
+    transition: .5s;
+    color: red;
+    cursor: pointer;
+}
+#perfil {
+        padding-left: 1em;
+}
+
+#horaActualizada {
+    font-size: .7em;
+}
