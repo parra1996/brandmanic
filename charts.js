@@ -12,8 +12,6 @@ export const renderChart = ({
   if (other) labels = other();
   if (otherData) infoData = otherData();
 
-  console.log(infoData);
-
   const data = {
     labels: [...labels],
     datasets: [

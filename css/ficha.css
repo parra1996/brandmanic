@@ -669,3 +669,7 @@ background-color: white;
 #horaActualizada {
     font-size: .7em;
 }
+
+.card-text {
+    padding: -1;
+}

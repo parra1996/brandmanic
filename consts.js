@@ -21,3 +21,5 @@ export const userDetailUsername = document.getElementById("userDetailUsername");
 export const userDetailIg = document.getElementById("userDetailIg");
 export const userDetailData = document.getElementById("userDetailData");
 export const horaActualizada = document.getElementById("horaActualizada");
+export const downloadInflucard = document.getElementById("influcard");
+export const goHomeButton = document.getElementById("salir");

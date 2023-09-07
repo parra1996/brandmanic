@@ -9,12 +9,10 @@ body {
 .container {
     height: 39em;
     width: 70em;
-    
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
 
     background-color: lightgray;
 }
@@ -36,8 +34,6 @@ body {
     display: none;
 }
 
-
-
 .header {
     height: 7em;
     width: 100vw;
@@ -47,5 +43,97 @@ body {
 }
 
 .customCard {
-    margin:1em
+    margin:1em;
+    height: 18em;
+    width: 28rem;
+
+    border: solid gray;
+}   
+
+
+.ladoIzq {
+    height: 18em;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+ .ladoIzqPic {
+    height: 13em;
+    width: 14em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    position: relative;
+
+} 
+
+
+ .ladoIzqData {
+    height: 5em;
+    width: 14em;
+
+    padding-left: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}  
+
+.card-body {
+height: 18em;
+width: 50%;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+}
+
+
+.image {
+    width: 150px;
+    position: relative;
+}
+
+img {
+    width: 100%;
+    display: block;
+    margin:auto;
+
+    border: solid green;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(255, 166, 0, 0.283);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: .6s;
+    color: white;
+    padding-top: 3em;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 5em;
+    cursor: pointer;
+}
+
+.content:hover {
+    opacity: 1;
 }

@@ -17,34 +17,50 @@ function crearCards({ data }) {
     age,
     country,
     interests,
+    gender,
   } = data;
 
   console.log(data);
   const newInterest = interests.split(",");
 
   const card = `
-     <div class="card d-flex flex-row customCard"  style="width: 18rem;">
-     <div>
-     <img src='${account_picture}' id="profilePic" class="rounded-circle" style="height: 100px;" alt="...">
-     <p><i class="fa-brands fa-instagram"></i> ${username}</p>
-     <p> ${age}</p>
-     <p> ${country}</p>
-     <p> ${newInterest[0]},${newInterest[1]}...</p>
-     </div>
-     <div class="card-body" >
-            <h5 class="card-title">${username}</h5>
-            <p class="card-text"><i class="fa-solid fa-users"></i>Audiencia: ${followers_formated}</p>
-            <p class="card-text">Fakes: ${fakes}</p>
-            <p class="card-text">Media Eng: ${avg_engagement_formated}</p>
-            <p class="card-text">Eng Rate: ${followers_formated}</p>
-            <p class="card-text">Impresiones: ${engagement_rate}</p>
+    <div class="card d-flex flex-row customCard " >
+      <div class="ladoIzq">
+        <div class="ladoIzqPic">
+        <div class=""profilePic>
+          <div class="image">
+            <img src='${account_picture}' id="profilePic" class="rounded-circle"  alt='${username}'>
+            <div class="content" id="content">
+              <span class="verInflucard">ver influcard</span>
+            </div>
+          </div>
         </div>
+        </div>
+        <div class="ladoIzqData">
+          <span><i class="fa-brands fa-square-instagram" style="color: #f709fb;"></i> ${username}</span>
+          <span class="ladoIzqDataSpan"> ${
+            gender === "1" ? "Mujer" : "Hombre"
+          }, ${age}</span>
+          <span class="ladoIzqDataSpan> ${country}</span>
+          <span class="ladoIzqDataSpan> ${newInterest[0]},${
+    newInterest[1]
+  }...</span>
+        </div>
+      </div>
+      <div class="card-body" >
+              <h5 class="card-title">${username}</h5>
+              <p ><i class="fa-solid fa-users"></i> Audiencia: ${followers_formated}</p>
+              <p class="card-text"><i class="fa-solid fa-user-xmark"></i> Fakes: ${fakes}</p>
+              <p class="card-text"><i class="fa-solid fa-heart"></i> Media Eng: ${avg_engagement_formated}</p>
+              <p class="card-text"><i class="fa-solid fa-heart-pulse"></i> Eng Rate: ${followers_formated}</p>
+              <p class="card-text"><i class="fa-solid fa-eye"></i> Impresiones: ${engagement_rate}</p>
+      </div>
     </div>`;
 
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML += card;
 
-  const profilePic = document.getElementById("profilePic");
+  const profilePic = document.getElementById("content");
   profilePic.addEventListener("click", function (e) {
     e.preventDefault();
     saveData({ data });

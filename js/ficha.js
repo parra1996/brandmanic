@@ -9,9 +9,11 @@ import {
   audienciaAlcance,
   audienciaDesempeno,
   audienciaReal,
+  downloadInflucard,
   engagement_formated,
   er_alcance,
   er_audiencia,
+  goHomeButton,
   horaActualizada,
   impresiones,
   impresionesAlcance,
@@ -23,6 +25,7 @@ import {
   vr_alcance,
   vr_audiencia,
 } from "../consts.js";
+import { goHome, mostrarHora, screenShot } from "../utils.js";
 
 const userData = localStorage.getItem("userData");
 const parsedUserData = JSON.parse(userData);
@@ -307,9 +310,8 @@ reachchart();
 // });
 
 const relevanceChart = () => {
-  const { relevance_formated_graph, resonance_formated_graph } = parsedUserData;
+  const { relevance_formated_graph } = parsedUserData;
 
-  console.log(relevance_formated_graph);
   const data = {
     datasets: [
       {
@@ -354,16 +356,8 @@ const resonanceChart = () => {
 
 resonanceChart();
 
-const mostrarHora = () => {
-  const horaActual = moment().format("MMMM Do YYYY, h:mm:ss a");
-  horaActualizada.innerHTML += horaActual;
-};
 mostrarHora();
 
-const goHome = () => {
-  console.log("cñjegvbleylwerygweryh");
-  window.location.href = "index.html";
-};
+goHomeButton.addEventListener("click", goHome);
 
-const x = document.getElementById("salir");
-x.addEventListener("click", goHome);
+downloadInflucard.addEventListener("click", screenShot);
