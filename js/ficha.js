@@ -10,11 +10,11 @@ import {
   audienciaDesempeno,
   audienciaReal,
   downloadInflucard,
+  empresas,
   engagement_formated,
   er_alcance,
   er_audiencia,
   goHomeButton,
-  horaActualizada,
   impresiones,
   impresionesAlcance,
   impresionesAudiencia,
@@ -361,3 +361,21 @@ mostrarHora();
 goHomeButton.addEventListener("click", goHome);
 
 downloadInflucard.addEventListener("click", screenShot);
+
+const printCompanies = () => {
+  const brands_images = parsedUserData.brands_images;
+  const topEight = brands_images.slice(0, 8);
+  console.log(topEight);
+  topEight.map((brand) => {
+    empresas.innerHTML += `
+    <div class="marcasCards">
+      <img src="${brand.image}" style="height: 3em; width: 4em;" alt="${brand.name}">
+      <span style="font-size: .8em;">
+        ${brand.name}
+      </span>
+    </div>
+  `;
+  });
+};
+
+printCompanies();

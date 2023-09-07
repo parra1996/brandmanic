@@ -23,3 +23,4 @@ export const userDetailData = document.getElementById("userDetailData");
 export const horaActualizada = document.getElementById("horaActualizada");
 export const downloadInflucard = document.getElementById("influcard");
 export const goHomeButton = document.getElementById("salir");
+export const empresas = document.getElementById("marcasDetail");
