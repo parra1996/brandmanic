@@ -1,4 +1,4 @@
-import { renderChart } from "../charts.js";
+import { renderBarChart, renderChart } from "../charts.js";
 import {
   chartColors,
   engagementChartColors,
@@ -245,7 +245,7 @@ const dailyRateFunc = () => {
   return dailyRate;
 };
 
-renderChart({
+renderBarChart({
   id: "engRateDaily",
   type: "bar",
   backgroundColor: [...engagementChartColors],
@@ -254,8 +254,6 @@ renderChart({
   displayLegend: false,
   otherData: dailyRateFunc,
 });
-
-// NAVBAR
 
 const { username, account_picture, age, country, account_url, gender } =
   parsedUserData;
@@ -271,35 +269,43 @@ userDetailData.innerHTML += `${country},
  <i class="fa-solid fa-venus" style="color: #fa01fe;"></i>
  ${gender === "1" ? "mujer" : "hombre"} ${age} años`;
 
-const reachchart = () => {
-  const { reach_formated_graph } = parsedUserData;
+// const reachchart = () => {
+//   const { reach_formated_graph } = parsedUserData;
 
-  const data = {
-    // labels: ["hombre", "mujer"],
-    datasets: [
-      {
-        labels: ["reach"],
-        data: [reach_formated_graph],
-        backgroundColor: ["blue", "white"],
-      },
-    ],
-  };
+//   const data = {
+//     // labels: ["hombre", "mujer"],
+//     datasets: [
+//       {
+//         labels: ["reach"],
+//         data: [reach_formated_graph],
+//         backgroundColor: ["blue", "white"],
+//       },
+//     ],
+//   };
 
-  const options = {
-    elements: {
-      center: {
-        text: "tu madre",
-      },
-    },
-    plugins: {
-      legend: {
-        position: "left ",
-      },
-    },
-  };
-  new Chart("reachchart", { type: "doughnut", data, options: options });
-};
-reachchart();
+//   const options = {
+//     elements: {
+//       center: {
+//         text: "tu madre",
+//       },
+//     },
+//     plugins: {
+//       legend: {
+//         position: "left ",
+//       },
+//       title: {
+//         display: true,
+//         font: {
+//           size: 16,
+//           family: "vazir",
+//         },
+//         text: "Reach",
+//       },
+//     },
+//   };
+//   new Chart("reachchart", { type: "doughnut", data, options: options });
+// };
+// reachchart();
 
 // renderChart({
 //   id: "reachchart",
@@ -309,30 +315,43 @@ reachchart();
 //   titleText: "Reach",
 // });
 
-const relevanceChart = () => {
-  const { relevance_formated_graph } = parsedUserData;
+// const relevanceChart = () => {
+//   const { relevance_formated_graph } = parsedUserData;
 
-  const data = {
-    datasets: [
-      {
-        data: [relevance_formated_graph],
-        backgroundColor: ["blue", "white"],
-      },
-    ],
-  };
+//   const data = {
+//     datasets: [
+//       {
+//         data: [relevance_formated_graph],
+//         backgroundColor: ["blue", "white"],
+//         showInLegend: true,
+//       },
+//     ],
+//   };
 
-  const options = {
-    plugins: {
-      legend: {
-        position: "left ",
-      },
-    },
-  };
-  new Chart("relevanceChart", { type: "doughnut", data, options: options });
-};
+//   const options = {
+//     plugins: {
+//       legend: {
+//         position: "left ",
+//       },
+//       title: {
+//         text: "Doughnut Chart",
+//         verticalAlign: "center",
+//         dockInsidePlotArea: true,
+//       },
+//     },
+//   };
+//   new Chart("relevanceChart", { type: "doughnut", data, options: options });
+// };
 
-relevanceChart();
+// relevanceChart();
 
+renderChart({
+  id: "reachchart",
+  type: "doughnut",
+  infoData: [parsedUserData.reach_formated_graph],
+  backgroundColor: ["pink"],
+  titleText: "Reach",
+});
 const resonanceChart = () => {
   const { resonance_formated_graph } = parsedUserData;
   const data = {
