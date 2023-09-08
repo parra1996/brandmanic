@@ -9,7 +9,7 @@ export const screenShot = () => {
       a.setAttribute("href", url);
       a.click();
     });
-  }, 2000);
+  }, 1500);
 };
 
 const loading = () => {

@@ -1,9 +1,9 @@
-import { renderBarChart, renderChart } from "../charts.js";
+import { renderBarChart, renderChart, renderChartTerritory } from "./charts.js";
 import {
   chartColors,
   engagementChartColors,
   paisChartColors,
-} from "../colors.js";
+} from "./colors.js";
 import {
   audiencia,
   audienciaAlcance,
@@ -18,19 +18,20 @@ import {
   impresiones,
   impresionesAlcance,
   impresionesAudiencia,
+  reachPer,
+  relPer,
+  resPer,
   userDetailData,
   userDetailIg,
   userDetailUsername,
   vplays_formated,
   vr_alcance,
   vr_audiencia,
-} from "../consts.js";
-import { goHome, mostrarHora, screenShot } from "../utils.js";
+} from "./consts.js";
+import { goHome, mostrarHora, screenShot } from "./utils.js";
 
 const userData = localStorage.getItem("userData");
 const parsedUserData = JSON.parse(userData);
-
-console.log(parsedUserData);
 
 audiencia.innerHTML += parsedUserData.followers_formated;
 
@@ -63,56 +64,6 @@ renderChart({
   titleText: "Distribución por género",
 });
 
-const paisChart = () => {
-  const {
-    insight_perc_p1,
-    insight_perc_p2,
-    insight_perc_p3,
-    insight_perc_p4,
-    insight_perc_p5,
-  } = parsedUserData;
-
-  let topcountries = [];
-  const topCountriesArray = parsedUserData.insightsCountry;
-  for (let i = 0; i < topCountriesArray.length; i++) {
-    topcountries.push(topCountriesArray[i].country);
-  }
-
-  const data = {
-    labels: [...topcountries],
-    datasets: [
-      {
-        data: [
-          insight_perc_p1,
-          insight_perc_p2,
-          insight_perc_p3,
-          insight_perc_p4,
-          insight_perc_p5,
-        ],
-        backgroundColor: paisChartColors,
-      },
-    ],
-  };
-
-  const options = {
-    plugins: {
-      legend: {
-        position: "left",
-        padding: 1,
-      },
-      title: {
-        display: true,
-        text: "Distribución por Pais",
-        font: {
-          size: 16,
-          family: "vazir",
-        },
-      },
-    },
-  };
-  new Chart("paisChart", { type: "doughnut", data, options: options });
-};
-
 const transformData = () => {
   let topcountries = [];
   const topCountriesArray = parsedUserData.insightsCountry;
@@ -138,78 +89,44 @@ renderChart({
   titleText: "Distribución por Pais",
 });
 
-//TODO
-// const publicacionesChart = () => {
-//   const { post_territory_formated } = parsedUserData;
-//   console.log(post_territory_formated);
-
-//   const x = post_territory_formated.split("},");
-
-//   console.log(x);
-
-//   // const arr = post_territory_formated.split("},");
-//   // console.log(arr);
-//   // const data = {
-//   //   labels: ["13-17", "18-24", "25-34", "35-44", "45-64", "65+"],
-//   //   datasets: [
-//   //     {
-//   //       data: [
-//   //         insight_perc_13,
-//   //         insight_perc_18,
-//   //         insight_perc_25,
-//   //         insight_perc_35,
-//   //         insight_perc_45,
-//   //         insight_perc_65,
-//   //       ],
-//   //       backgroundColor: chartColors,
-//   //     },
-//   //   ],
-//   // };
-
-//   // const options = {
-//   //   plugins: {
-//   //     legend: {
-//   //       position: "left",
-//   //     },
-//   //   },
-//   // };
-//   // new Chart("modelschart", { type: "doughnut", data, options: options });
-// };
-// publicacionesChart();
-
-const publicacionesMomentChart = () => {
+const newData = () => {
   const { account_post_moment } = parsedUserData;
 
   let moments = [];
   for (let i = 0; i < account_post_moment.length; i++) {
     moments.push(account_post_moment[i].total);
   }
-
-  const data = {
-    labels: ["Mañana", "Tarde", "Noche"],
-    datasets: [
-      {
-        data: [...moments],
-        backgroundColor: ["blue", "yellow", "black"],
-      },
-    ],
-  };
-
-  const options = {
-    plugins: {
-      legend: {
-        position: "left",
-      },
-    },
-  };
-  new Chart("publicacionesMomentChart", {
-    type: "doughnut",
-    data,
-    options: options,
-  });
+  return moments;
 };
 
-publicacionesMomentChart();
+renderChart({
+  id: "publicacionesMomentChart",
+  type: "doughnut",
+  backgroundColor: ["yellow", "lightgreen", "black"],
+  otherData: newData,
+  labels: ["Mañana", "Tarde", "Noche"],
+  displayTitle: false,
+  titleText: "Franja horaria de sus publicaciones",
+});
+
+const dailyRateFunc = () => {
+  const { post_week_day } = parsedUserData;
+  let dailyRate = [];
+  for (let i = 0; i < post_week_day.length; i++) {
+    dailyRate.push(post_week_day[i].engrate);
+  }
+  return dailyRate;
+};
+
+renderBarChart({
+  id: "engRateDaily",
+  type: "bar",
+  backgroundColor: [...engagementChartColors],
+  labels: ["L", "M", "M", "J", "V", "S", "D"],
+  titleText: "Engagement rate segun su publicación",
+  displayLegend: false,
+  otherData: dailyRateFunc,
+});
 
 audienciaDesempeno.innerHTML += parsedUserData.followers_formated;
 
@@ -236,25 +153,6 @@ er_alcance.innerHTML += parsedUserData.er_alcance + "%";
 
 er_audiencia.innerHTML += parsedUserData.er_audiencia + "%";
 
-const dailyRateFunc = () => {
-  const { post_week_day } = parsedUserData;
-  let dailyRate = [];
-  for (let i = 0; i < post_week_day.length; i++) {
-    dailyRate.push(post_week_day[i].engrate);
-  }
-  return dailyRate;
-};
-
-renderBarChart({
-  id: "engRateDaily",
-  type: "bar",
-  backgroundColor: [...engagementChartColors],
-  labels: ["L", "M", "M", "J", "V", "S", "D"],
-  titleText: "Engagement rate segun su publicación",
-  displayLegend: false,
-  otherData: dailyRateFunc,
-});
-
 const { username, account_picture, age, country, account_url, gender } =
   parsedUserData;
 
@@ -269,112 +167,6 @@ userDetailData.innerHTML += `${country},
  <i class="fa-solid fa-venus" style="color: #fa01fe;"></i>
  ${gender === "1" ? "mujer" : "hombre"} ${age} años`;
 
-// const reachchart = () => {
-//   const { reach_formated_graph } = parsedUserData;
-
-//   const data = {
-//     // labels: ["hombre", "mujer"],
-//     datasets: [
-//       {
-//         labels: ["reach"],
-//         data: [reach_formated_graph],
-//         backgroundColor: ["blue", "white"],
-//       },
-//     ],
-//   };
-
-//   const options = {
-//     elements: {
-//       center: {
-//         text: "tu madre",
-//       },
-//     },
-//     plugins: {
-//       legend: {
-//         position: "left ",
-//       },
-//       title: {
-//         display: true,
-//         font: {
-//           size: 16,
-//           family: "vazir",
-//         },
-//         text: "Reach",
-//       },
-//     },
-//   };
-//   new Chart("reachchart", { type: "doughnut", data, options: options });
-// };
-// reachchart();
-
-// renderChart({
-//   id: "reachchart",
-//   type: "doughnut",
-//   infoData: [parsedUserData.reach_formated_graph],
-//   backgroundColor: ["blue", "white"],
-//   titleText: "Reach",
-// });
-
-// const relevanceChart = () => {
-//   const { relevance_formated_graph } = parsedUserData;
-
-//   const data = {
-//     datasets: [
-//       {
-//         data: [relevance_formated_graph],
-//         backgroundColor: ["blue", "white"],
-//         showInLegend: true,
-//       },
-//     ],
-//   };
-
-//   const options = {
-//     plugins: {
-//       legend: {
-//         position: "left ",
-//       },
-//       title: {
-//         text: "Doughnut Chart",
-//         verticalAlign: "center",
-//         dockInsidePlotArea: true,
-//       },
-//     },
-//   };
-//   new Chart("relevanceChart", { type: "doughnut", data, options: options });
-// };
-
-// relevanceChart();
-
-renderChart({
-  id: "reachchart",
-  type: "doughnut",
-  infoData: [parsedUserData.reach_formated_graph],
-  backgroundColor: ["pink"],
-  titleText: "Reach",
-});
-const resonanceChart = () => {
-  const { resonance_formated_graph } = parsedUserData;
-  const data = {
-    datasets: [
-      {
-        data: [resonance_formated_graph],
-        backgroundColor: ["blue", "white"],
-      },
-    ],
-  };
-
-  const options = {
-    plugins: {
-      legend: {
-        position: "left ",
-      },
-    },
-  };
-  new Chart("resonanceChart", { type: "doughnut", data, options: options });
-};
-
-resonanceChart();
-
 mostrarHora();
 
 goHomeButton.addEventListener("click", goHome);
@@ -384,7 +176,6 @@ downloadInflucard.addEventListener("click", screenShot);
 const printCompanies = () => {
   const brands_images = parsedUserData.brands_images;
   const topEight = brands_images.slice(0, 8);
-  console.log(topEight);
   topEight.map((brand) => {
     empresas.innerHTML += `
     <div class="marcasCards">
@@ -398,3 +189,33 @@ const printCompanies = () => {
 };
 
 printCompanies();
+
+reachPer.innerHTML += "&nbsp" + parsedUserData.reach_formated_graph + "%";
+relPer.innerHTML += "&nbsp" + parsedUserData.relevance_formated_graph + "%";
+resPer.innerHTML += "&nbsp" + parsedUserData.resonance_formated_graph + "%";
+
+const dailyPostData = () => {
+  const post_territory = parsedUserData.post_territory;
+
+  const newData = {
+    labels: [],
+    dataValues: [],
+    colors: [],
+  };
+
+  post_territory.map((data) => {
+    newData.labels.push(data.category);
+    newData.dataValues.push(data.value);
+    newData.colors.push(data.color);
+  });
+  return newData;
+};
+
+dailyPostData();
+
+renderChartTerritory({
+  id: "publicacionesChart",
+  type: "doughnut",
+  otherData: dailyPostData,
+  titleText: "Distribución de sus publicaciones por territorios",
+});

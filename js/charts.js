@@ -7,6 +7,7 @@ export const renderChart = ({
   titleText,
   other = false,
   displayLegend = true,
+  displayTitle = true,
   otherData = false,
 }) => {
   if (other) labels = other();
@@ -26,18 +27,20 @@ export const renderChart = ({
   const options = {
     plugins: {
       legend: {
-        display: true,
+        display: displayLegend,
         position: "left",
         align: "center",
         borderWidth: 1,
         borderColor: [...backgroundColor],
       },
+
       title: {
-        display: true,
-        // padding: 0,
+        display: displayTitle,
+        position: "top",
         font: {
           size: 16,
           family: "vazir",
+          lineHeight: 1,
         },
         text: `${titleText}`,
       },
@@ -100,6 +103,61 @@ export const renderBarChart = ({
         font: {
           size: 16,
           family: "vazir",
+        },
+        text: `${titleText}`,
+      },
+    },
+  };
+
+  new Chart(`${id}`, {
+    type: `${type}`,
+    data,
+    options: options,
+  });
+};
+
+export const renderChartTerritory = ({
+  id,
+  type,
+  labels = [],
+  infoData,
+  titleText,
+  other = false,
+  displayLegend = true,
+  displayTitle = true,
+  otherData = false,
+}) => {
+  if (other) labels = other();
+  if (otherData) infoData = otherData();
+  const data = {
+    labels: [...infoData.labels],
+    datasets: [
+      {
+        label: [...infoData.labels],
+        data: [...infoData.dataValues],
+        backgroundColor: [...infoData.colors],
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: true,
+        position: "left",
+        align: "center",
+        borderWidth: 1,
+        borderColor: [...infoData.colors],
+      },
+      title: {
+        display: displayTitle,
+        position: "top",
+        padding: {
+          bottom: 1,
+        },
+        font: {
+          size: 20,
+          family: "arial",
         },
         text: `${titleText}`,
       },

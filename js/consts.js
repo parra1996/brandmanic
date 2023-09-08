@@ -24,3 +24,6 @@ export const horaActualizada = document.getElementById("horaActualizada");
 export const downloadInflucard = document.getElementById("influcard");
 export const goHomeButton = document.getElementById("salir");
 export const empresas = document.getElementById("marcasDetail");
+export const reachPer = document.getElementById("reachchart");
+export const relPer = document.getElementById("relevanceChart");
+export const resPer = document.getElementById("resonanceChart");
