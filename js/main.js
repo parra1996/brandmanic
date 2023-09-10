@@ -20,7 +20,6 @@ function crearCards({ data }) {
     gender,
   } = data;
 
-  console.log(data);
   const newInterest = interests.split(",");
 
   const card = `
@@ -60,11 +59,11 @@ function crearCards({ data }) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML += card;
 
-  const profilePic = document.getElementById("content");
-  profilePic.addEventListener("click", function (e) {
-    e.preventDefault();
-    saveData({ data });
-    irFicha();
+  document.querySelectorAll("#content").forEach((e) => {
+    e.addEventListener("click", () => {
+      saveData({ data });
+      irFicha();
+    });
   });
 }
 
@@ -82,8 +81,6 @@ const irFicha = () => {
 
 const saveData = ({ data }) => {
   const userData = data;
-  console.log(userData, "ESTO ES ENMAIN");
-
   localStorage.setItem("userData", JSON.stringify(userData));
 };
 
